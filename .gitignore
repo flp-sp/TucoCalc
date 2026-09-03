@@ -1,2 +1,25 @@
+# Ignore agent and spec docs
 AGENTS.md
 SPEC.md
+
+# Gradle
+.gradle/
+build/
+
+# IntelliJ IDEA / Android Studio
+.idea/
+*.iml
+*.ipr
+*.iws
+local.properties
+
+# Android
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+output.json
+
+# OS
+.DS_Store

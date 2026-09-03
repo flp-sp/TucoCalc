@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">TucoCalc</string>
+    <string name="title_activity_main">Divisão de Conta</string>
+    <string name="hint_num_people">Número de pessoas</string>
+    <string name="hint_total_bill">Valor total da conta</string>
+    <string name="hint_tip_percentage">Porcentagem da gorjeta (%)</string>
+    <string name="button_calculate">Calcular</string>
+    <string name="title_activity_person">Pessoa</string>
+    <string name="label_person">Pessoa %d</string>
+    <string name="label_shared_items">Itens Compartilhados</string>
+    <string name="label_individual_items">Itens Individuais</string>
+    <string name="button_add_item">Adicionar Item</string>
+    <string name="dialog_add_item_title">Adicionar Item Individual</string>
+    <string name="hint_item_name">Nome do item</string>
+    <string name="hint_item_value">Valor do item</string>
+    <string name="button_add">Adicionar</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="label_total">Total: R$ %.2f</string>
+    <string name="label_tip">Gorjeta: R$ %.2f</string>
+    <string name="label_grand_total">Total com gorjeta: R$ %.2f</string>
+    <string name="label_shared_portion">Parte compartilhada (sem gorjeta): R$ %.2f</string>
+    <string name="label_shared_portion_with_tip">Parte compartilhada com gorjeta: R$ %.2f</string>
+    <string name="label_individual_portion_with_tip">Itens individuais com gorjeta: R$ %.2f</string>
+    <string name="error_invalid_number">Número inválido</string>
+    <string name="error_invalid_value">Valor inválido</string>
+    <string name="error_empty_item">Preencha nome e valor</string>
+</resources>
