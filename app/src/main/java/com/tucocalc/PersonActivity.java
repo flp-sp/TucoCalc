@@ -1,6 +1,7 @@
 package com.tucocalc;
 
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.Gravity;
@@ -43,7 +44,8 @@ public class PersonActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(v -> {
             BillContext ctx = BillManager.getInstance().getContext();
             if (ctx != null && currentIndex == ctx.getPeopleCount() - 1) {
-                showSummary();
+                Intent intent = new Intent(this, ReviewActivity.class);
+                startActivity(intent);
             } else {
                 navigate(1);
             }
@@ -165,29 +167,6 @@ public class PersonActivity extends AppCompatActivity {
         row.addView(value);
 
         container.addView(row);
-    }
-
-    private void showSummary() {
-        BillContext ctx = BillManager.getInstance().getContext();
-        if (ctx == null) {
-            return;
-        }
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < ctx.getPeopleCount(); i++) {
-            sb.append(String.format(Locale.getDefault(), "%s: R$ %.2f\n",
-                    String.format(Locale.getDefault(), getString(R.string.label_person), i + 1),
-                    ctx.getPersonSubtotalWithTip(i)));
-        }
-        sb.append(String.format(Locale.getDefault(), getString(R.string.label_grand_total),
-                ctx.getTotalOfPersonTotals()));
-        new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.label_grand_total))
-                .setMessage(sb.toString())
-                .setPositiveButton(android.R.string.ok, (d, w) -> {
-                    BillManager.getInstance().reset();
-                    finish();
-                })
-                .show();
     }
 
     private void showAddItemDialog() {

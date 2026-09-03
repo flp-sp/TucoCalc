@@ -22,6 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".PersonActivity" />
+        <activity android:name=".ReviewActivity" />
     </application>
 
 </manifest>

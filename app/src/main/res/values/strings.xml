@@ -21,6 +21,17 @@
     <string name="label_shared_portion">Parte compartilhada (sem gorjeta): R$ %.2f</string>
     <string name="label_shared_portion_with_tip">Parte compartilhada com gorjeta: R$ %.2f</string>
     <string name="label_individual_portion_with_tip">Itens individuais com gorjeta: R$ %.2f</string>
+    <string name="title_activity_review">Revisão da Conta</string>
+    <string name="label_review_header">Conta finalizada</string>
+    <string name="label_review_shared">Parte compartilhada (por pessoa): R$ %.2f</string>
+    <string name="label_review_person_total">Total a pagar: R$ %.2f</string>
+    <string name="label_review_shared_with_tip">Compartilhado c/ gorjeta: R$ %.2f</string>
+    <string name="label_review_check_total">Soma de todos: R$ %.2f</string>
+    <string name="label_review_expected_total">Valor da conta: R$ %.2f</string>
+    <string name="label_review_match">Confere com o valor informado.</string>
+    <string name="label_review_mismatch">Atenção: pequena diferença de arredondamento.</string>
+    <string name="button_new_bill">Nova conta</string>
+    <string name="button_back_review">Voltar para editar</string>
     <string name="error_invalid_number">Número inválido</string>
     <string name="error_invalid_value">Valor inválido</string>
     <string name="error_empty_item">Preencha nome e valor</string>
