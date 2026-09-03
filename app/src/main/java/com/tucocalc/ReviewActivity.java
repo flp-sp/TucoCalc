@@ -1,7 +1,6 @@
 package com.tucocalc;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.ViewGroup;
@@ -47,6 +46,7 @@ public class ReviewActivity extends AppCompatActivity {
 
     private void render(BillContext ctx) {
         int people = ctx.getPeopleCount();
+        int onSurface = getColorFromAttr(android.R.attr.textColorPrimary);
 
         TextView header = new TextView(this);
         header.setText(getString(R.string.label_review_header));
@@ -59,13 +59,13 @@ public class ReviewActivity extends AppCompatActivity {
         grandTotal.setText(String.format(Locale.getDefault(), getString(R.string.label_grand_total),
                 ctx.getTotalOfPersonTotals()));
         grandTotal.setTextSize(16);
-        grandTotal.setTextColor(Color.rgb(0, 122, 0));
+        grandTotal.setTextColor(getColorFromAttr(com.google.android.material.R.attr.colorPrimary));
         grandTotal.setGravity(Gravity.CENTER);
         grandTotal.setPadding(0, 0, 0, 16);
         container.addView(grandTotal);
 
         for (int i = 0; i < people; i++) {
-            container.addView(buildPersonCard(ctx, i));
+            container.addView(buildPersonCard(ctx, i, onSurface));
         }
 
         BigDecimal sum = ctx.getTotalOfPersonTotals();
@@ -75,15 +75,15 @@ public class ReviewActivity extends AppCompatActivity {
         check.setPadding(0, 16, 0, 0);
         if (diff.compareTo(new BigDecimal("0.01")) <= 0) {
             check.setText(getString(R.string.label_review_match));
-            check.setTextColor(Color.rgb(0, 122, 0));
+            check.setTextColor(getColorFromAttr(com.google.android.material.R.attr.colorPrimary));
         } else {
             check.setText(getString(R.string.label_review_mismatch));
-            check.setTextColor(Color.rgb(200, 0, 0));
+            check.setTextColor(getColorFromAttr(com.google.android.material.R.attr.colorError));
         }
         container.addView(check);
     }
 
-    private LinearLayout buildPersonCard(BillContext ctx, int index) {
+    private LinearLayout buildPersonCard(BillContext ctx, int index, int onSurface) {
         LinearLayout card = new LinearLayout(this);
         card.setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams cardParams = new LinearLayout.LayoutParams(
@@ -91,24 +91,27 @@ public class ReviewActivity extends AppCompatActivity {
         cardParams.setMargins(0, 0, 0, 24);
         card.setLayoutParams(cardParams);
         card.setPadding(16, 16, 16, 16);
-        card.setBackgroundColor(0xFFF0F0F0);
+        int surface = getColorFromAttr(com.google.android.material.R.attr.colorSurface);
+        card.setBackgroundColor(surface);
 
         TextView title = new TextView(this);
         title.setText(String.format(Locale.getDefault(), getString(R.string.label_person), index + 1));
         title.setTextSize(18);
         title.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
+        title.setTextColor(onSurface);
         card.addView(title);
 
         TextView shared = new TextView(this);
         shared.setText(String.format(Locale.getDefault(), getString(R.string.label_review_shared_with_tip),
                 ctx.getSharedPerPersonWithTip()));
         shared.setPadding(0, 4, 0, 0);
+        shared.setTextColor(onSurface);
         card.addView(shared);
 
         for (BillItem item : ctx.getPersonItems(index)) {
             TextView itemLine = new TextView(this);
             itemLine.setText(String.format(Locale.getDefault(), "  - %s: R$ %.2f", item.getName(), item.getValue()));
-            itemLine.setTextColor(0xFF555555);
+            itemLine.setTextColor(onSurface);
             card.addView(itemLine);
         }
 
@@ -116,9 +119,20 @@ public class ReviewActivity extends AppCompatActivity {
         total.setText(String.format(Locale.getDefault(), getString(R.string.label_review_person_total),
                 ctx.getPersonSubtotalWithTip(index)));
         total.setTypeface(android.graphics.Typeface.DEFAULT_BOLD);
+        total.setTextColor(onSurface);
         total.setPadding(0, 8, 0, 0);
         card.addView(total);
 
         return card;
+    }
+
+    private int getColorFromAttr(int attr) {
+        android.content.res.TypedArray a = getTheme()
+                .obtainStyledAttributes(new int[]{attr});
+        try {
+            return a.getColor(0, 0xFF000000);
+        } finally {
+            a.recycle();
+        }
     }
 }
