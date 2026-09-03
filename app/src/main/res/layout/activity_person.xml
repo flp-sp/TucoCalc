@@ -23,25 +23,38 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp">
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonPrev"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="0dp"
+            android:id="@+id/buttonReview"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:text="Anterior" />
+            android:text="@string/button_view_review" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/buttonNext"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Próxima" />
+            android:orientation="horizontal"
+            android:paddingTop="8dp">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonPrev"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="Anterior" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/buttonNext"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Próxima" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

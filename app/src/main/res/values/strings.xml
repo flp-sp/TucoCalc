@@ -10,6 +10,7 @@
     <string name="label_shared_items">Itens Compartilhados</string>
     <string name="label_individual_items">Itens Individuais</string>
     <string name="button_add_item">Adicionar Item</string>
+    <string name="button_view_review">Ver revisão</string>
     <string name="dialog_add_item_title">Adicionar Item Individual</string>
     <string name="hint_item_name">Nome do item</string>
     <string name="hint_item_value">Valor do item</string>

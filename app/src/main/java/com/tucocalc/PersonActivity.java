@@ -40,15 +40,12 @@ public class PersonActivity extends AppCompatActivity {
         container = findViewById(R.id.personContainer);
         buttonPrev = findViewById(R.id.buttonPrev);
         buttonNext = findViewById(R.id.buttonNext);
+        MaterialButton buttonReview = findViewById(R.id.buttonReview);
         buttonPrev.setOnClickListener(v -> navigate(-1));
-        buttonNext.setOnClickListener(v -> {
-            BillContext ctx = BillManager.getInstance().getContext();
-            if (ctx != null && currentIndex == ctx.getPeopleCount() - 1) {
-                Intent intent = new Intent(this, ReviewActivity.class);
-                startActivity(intent);
-            } else {
-                navigate(1);
-            }
+        buttonNext.setOnClickListener(v -> navigate(1));
+        buttonReview.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ReviewActivity.class);
+            startActivity(intent);
         });
         render();
     }
@@ -64,11 +61,6 @@ public class PersonActivity extends AppCompatActivity {
             return;
         }
         currentIndex = next;
-        if (currentIndex == ctx.getPeopleCount() - 1) {
-            buttonNext.setText("Concluir");
-        } else {
-            buttonNext.setText("Próxima");
-        }
         render();
     }
 
@@ -138,7 +130,6 @@ public class PersonActivity extends AppCompatActivity {
 
         buttonPrev.setEnabled(index > 0);
         buttonNext.setEnabled(index < people - 1);
-        buttonNext.setText(index == people - 1 ? "Concluir" : "Próxima");
     }
 
     private BigDecimal individualWithTip(BillContext ctx, int index) {
